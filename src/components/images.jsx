@@ -1,16 +1,26 @@
 import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 
-import Image from "./image";
+import "./images.less";
 
-export default function Images() {
-  const images = [...Array(20)]
+function Images(props) {
+  const { images } = props;
 
   return (
     <>
-      {images && images.map(() => (
-        <Image src='http://placekitten.com/200/300' />
-      ))}
+      <div className="Container">
+        {images && images.map(image => (
+          <img src={image.src} alt={image.name} key={image.id} />
+        ))}
+      </div>
     </>
   )
 }
+
+export default connect((store) => {
+  return {
+    images: store.images
+  }
+})(Images)
+
