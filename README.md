@@ -6,6 +6,7 @@
 
 ## Development
 * Run `yarn start`
+* Visit `localhost:1234`
 
 ## Testing
 * Run `yarn test`
