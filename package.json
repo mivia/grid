@@ -6,14 +6,18 @@
   "author": "Michał Wiaderek <wiaderekmichal@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "parcel src/index.html --cache-dir ./.cache/dev"
+    "start": "parcel src/index.html --cache-dir ./.cache/dev",
+    "test": "yarn jest"
   },
   "dependencies": {
+    "babel-plugin-dynamic-import-node": "^2.3.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
     "redux": "^4.0.4",
+    "redux-mock-store": "^1.5.3",
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
@@ -26,6 +30,15 @@
     "enzyme": "^3.10.0",
     "eslint": "^6.0.1",
     "jest": "^24.8.0",
+    "jest-transform-stub": "^2.0.0",
     "less": "^3.9.0"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/jest.setup.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|)$": "<rootDir>/src/mocks/emptyMock.js"
+    }
   }
 }

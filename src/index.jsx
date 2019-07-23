@@ -11,7 +11,7 @@ function Main() {
   return (
     <Switch>
       <Route path="/images" exact component={Images} />
-      <Route path="/images/:id?" exact component={ImageDetails} />
+      <Route path="/images/:id" exact component={ImageDetails} />
       <Redirect exact from="/" to="/images" />
     </Switch>
   );

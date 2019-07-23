@@ -14,6 +14,13 @@ class ImageDetails extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    const { image, history } = this.props;
+    if(!image) {
+      history.push('/images');
+    }
+  }
+
   onImageDelete = (id) => {
     const { deleteImage, history } = this.props;
 
@@ -32,7 +39,7 @@ class ImageDetails extends React.Component {
     const { image } = this.props;
 
     return (
-      <>
+      <div>
         {image &&
           <div className="ImageDetails">
             <img src={image.src} alt={image.name} />
@@ -42,14 +49,15 @@ class ImageDetails extends React.Component {
             </button>
           </div>
         }
-      </>
+      </div>
     )
   }
 }
 
 export default withRouter(connect(
   (store, ownProps) => {
-    const { id } = ownProps.match.params;
+    const { pathname } = ownProps.location;
+    const id = Number(pathname.replace('/images/', ''))
     const images = store.images;
     const image = images.find(img => img.id === Number(id));
 
