@@ -1,5 +1,4 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 
@@ -16,15 +15,17 @@ class ImageDetails extends React.Component {
   }
 
   onImageDelete = (id) => {
-    const { deleteImage } = this.props;
+    const { deleteImage, history } = this.props;
 
-    deleteImage(id)
+    deleteImage(id);
+    history.push('/images');
   }
 
-  onInputChange = (id) => {
+  onInputChange = (event, id) => {
     const { updateImageName } = this.props;
+    const newName = event.target.value;
 
-    updateImageName(id)
+    updateImageName(newName, id);
   }
 
   render() {
@@ -35,7 +36,7 @@ class ImageDetails extends React.Component {
         {image &&
           <div className="ImageDetails">
             <img src={image.src} alt={image.name} />
-            <input type="text" value={image.name} onChange={() => this.onInputChange(image.id)} />
+            <input type="text" value={image.name} onChange={(event) => this.onInputChange(event, image.id)} />
             <button type="button" onClick={() => this.onImageDelete(image.id)}>
               Delete image
             </button>
