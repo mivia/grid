@@ -10,6 +10,7 @@
     "test": "yarn jest"
   },
   "dependencies": {
+    "autoprefixer": "^9.6.1",
     "babel-plugin-dynamic-import-node": "^2.3.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "react": "^16.8.6",
