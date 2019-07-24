@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
+import PropTypes from 'prop-types';
 
 import {
   deleteImage,
@@ -52,6 +53,12 @@ class ImageDetails extends React.Component {
       </div>
     )
   }
+}
+
+ImageDetails.propTypes = {
+  image: PropTypes.object,
+  deleteImage: PropTypes.func,
+  updateImageName: PropTypes.func
 }
 
 export default withRouter(connect(

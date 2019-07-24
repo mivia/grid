@@ -9,28 +9,30 @@ import ImageDetails from "./image-details";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
-
+const images = [
+  {
+    id: 1,
+    src: 'abc',
+    name: 'test'
+  },
+  {
+    id: 2,
+    src: 'def'
+  }
+]
 const store = {
-  images: [
-    {
-      id: 1,
-      src: 'abc',
-      name: 'test'
-    },
-    {
-      id: 2,
-      src: 'def'
-    }
-  ]
+  images
 };
 
 describe("<ImageDetails />", () => {
   const mockedStore = mockStore(store);
+  const imageId = 1;
+  const imageToTest = images.find(image => image.id === imageId);
 
   it("renders image based on id route param", () => {
     const component = mount(
       <Provider store={mockedStore}>
-        <MemoryRouter initialEntries={[{ pathname: "/images/1" }]}
+        <MemoryRouter initialEntries={[{ pathname: `/images/${imageId}` }]}
   initialIndex={1}>
           <ImageDetails />
         </MemoryRouter>
@@ -38,6 +40,6 @@ describe("<ImageDetails />", () => {
     )
     const imageName = component.find('input').props().value;
 
-    expect(imageName).toBe('test');
+    expect(imageName).toBe(imageToTest.name);
   })
 })

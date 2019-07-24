@@ -31,7 +31,8 @@
     "eslint": "^6.0.1",
     "jest": "^24.8.0",
     "jest-transform-stub": "^2.0.0",
-    "less": "^3.9.0"
+    "less": "^3.9.0",
+    "prop-types": "^15.7.2"
   },
   "jest": {
     "setupFiles": [
